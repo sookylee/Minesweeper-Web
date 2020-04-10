@@ -2,7 +2,7 @@ function start() {
     var n = start_idle();
     var temp = make_mine(n);
     fill_nonMine(n, temp[0], temp[1]);
-    console.log(temp[0]);
+    //console.log(temp[0]);
 
     return [n, temp[0]];
 }
@@ -20,9 +20,6 @@ function start_idle() {
 function make_mine(n){
     var temp = parseInt(n*n/5, 10);
     var mineNum = Math.floor(Math.random()*(temp*3)) + temp;
-
-    // set dom mineNum
-    $("#successnum").text(String(n*n - mineNum));
 
     var arr = new Array(n);
     for(var i=0; i<n; i++) {
@@ -55,6 +52,11 @@ function make_mine(n){
         nowMineNum++;
         nowLeft--;
     }
+
+    // set dom mineNum
+    $("#successnum").text(nowLeft);
+    //console.log(nowLeft);
+
     //console.log("arr: " + arr);
     //console.log("mine_arr: ");
     //console.log(mine_arr);
