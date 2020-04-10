@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
     <head>
-        <title>Minesweeper</title>
+        <title>Minesweeper (server_not_used) </title>
         <link rel="stylesheet" href="css/main.css" >
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script type="text/javascript" src='src/start.js'></script>
@@ -9,7 +9,12 @@
         <script type="text/javascript">
             $(document).ready(function() {
                 $("#start").click(function() {
-                    var obj = start();
+                    var res = start();
+                    var n = res[0];
+                    var arr = res[1];
+                    //set_cookie(document, arr, "nowMineState");
+                    $("#num").text(n);
+                    setTable(n, arr);
                 });
             });
         </script>
@@ -19,11 +24,17 @@
         <div class='butt'>
             <button id='start'>Start</button>
         </div>
-        <br>
         <div class='panel'>
-
+            <table id="playspace">
+                <tbody id="showbox">
+                </tbody>
+            </table>
+        </div>
+        <div class="data">
+            <p id="num"></p>
         </div>
 
-        
+     <!-- <script src="src/cookie.js"></script>   -->
+     <script src="src/show.js"></script>
     </body>
 </html>

@@ -4,7 +4,7 @@ function start() {
     fill_nonMine(n, temp[0], temp[1]);
     console.log(temp[0]);
 
-    return temp[0];
+    return [n, temp[0]];
 }
 
 
@@ -67,7 +67,7 @@ function fill_nonMine(n, arr, mine_arr){
     for(var tmp in mine_arr){
     //Object.keys(mine_arr).forEach(function(key){
         key = parseInt(tmp, 10);
-        console.log("key: " +key+", "+typeof(key));
+        //console.log("key: " +key+", "+typeof(key));
         row = parseInt(key/n, 10);
         col = key%n;
 
