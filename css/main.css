@@ -44,3 +44,8 @@ td {
     position: absolute;
     align-items: center;
 }
+
+#start {
+    left: 70%;
+    position: relative;
+}
