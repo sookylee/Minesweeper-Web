@@ -21,7 +21,7 @@
                 $(document).on('click',".playbutt", function(){
                     var now = parseInt($("#nownum").text(), 10) + 1;
                     var success = parseInt($("#successnum").text(), 10);
-                    var life = parseInt($("#life").text().split(' ')[1], 10);
+                    var life = parseInt($("#life").text(), 10);
 
                     var row = $(this).closest('tr').prevAll().length;
                     var col = $(this).closest('td').prevAll().length;
@@ -33,12 +33,12 @@
                         t.html('X');
                         t.css('color', '#ee1111');
                         if(life == 1){
-                            $("#life").text("Life: 0");
+                            $("#life").text(0);
                             $(".playbutt").attr('disabled', 'true');
                             alert("Game Over!");
                         }
                         else {
-                            $("#life").text("Life: " + (life-1));
+                            $("#life").text(life-1);
                         }
                     }
                     else{
@@ -58,7 +58,8 @@
 
     <body>
         <div class='butt'>
-            <span id="life">Life: 3</span>
+            Life: 
+            <span id="life">3</span>
             <button id='start'>Start</button>
         </div>
         <div class='panel'>

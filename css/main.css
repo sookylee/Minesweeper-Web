@@ -39,13 +39,14 @@ td {
 }
 
 .butt {
-    left: 40%;
+    left: 50%;
     top: 10%;
+    margin-left: -100px;
     position: absolute;
     align-items: center;
 }
 
 #start {
-    left: 70%;
+    left: 100%;
     position: relative;
 }
