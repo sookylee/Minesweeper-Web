@@ -43,8 +43,8 @@ function make_mine(n){
         arr_temp[i] = i;
     }
 
-    console.log("temp: "+temp);
-    console.log("mineNum: " + mineNum);
+    //console.log("temp: "+temp);
+    //console.log("mineNum: " + mineNum);
 
     // set mine randomly
     while(nowMineNum < mineNum){
@@ -55,9 +55,9 @@ function make_mine(n){
         nowMineNum++;
         nowLeft--;
     }
-    console.log("arr: " + arr);
-    console.log("mine_arr: ");
-    console.log(mine_arr);
+    //console.log("arr: " + arr);
+    //console.log("mine_arr: ");
+    //console.log(mine_arr);
 
     return [arr, mine_arr];
 }
@@ -92,5 +92,5 @@ function fill_nonMine(n, arr, mine_arr){
     //});
     }
 
-    console.log("arr: " + arr);
+    //console.log("arr: " + arr);
 }
