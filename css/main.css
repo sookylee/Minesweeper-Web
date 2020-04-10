@@ -1,5 +1,5 @@
 .panel {
-    border-style: ridge;
+    border-style: groove;
     border-width: 3px;
     position: absolute;
     left: 50%;
@@ -20,12 +20,20 @@ table {
     border-collapse: collapse;
     width: 100%;
     height: 100%;
-    margin: 1px;
+    margin: 0;
+    table-layout: fixed;
+}
+
+td {
+    background-color: #aaaaaa;
+    color: #ffffff;
+    border: 1px solid;
+    border-color: #ffffff;
+    text-align: center;
 }
 
 
 .playbutt {
     width: 100%;
     height: 100%;
-    border: none;
 }

@@ -21,6 +21,9 @@ function make_mine(n){
     var temp = parseInt(n*n/5, 10);
     var mineNum = Math.floor(Math.random()*(temp*3)) + temp;
 
+    // set dom mineNum
+    $("#successnum").text(String(n*n - mineNum));
+
     var arr = new Array(n);
     for(var i=0; i<n; i++) {
         arr[i] = new Array(n);
@@ -28,7 +31,6 @@ function make_mine(n){
             arr[i][j] = 0;
         }
     }
-    console.log("Arr: "+arr);
 
     var arr_temp = new Array(n*n);
     var mine_arr = {};

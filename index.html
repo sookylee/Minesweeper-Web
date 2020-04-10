@@ -14,9 +14,38 @@
                     var arr = res[1];
                     //set_cookie(document, arr, "nowMineState");
                     $("#num").text(n);
+                    $("#arr").text(arr);
                     setTable(n, arr);
                 });
+                
+                $(document).on('click',".playbutt", function(){
+                    var now = parseInt($("#nownum").text(), 10) + 1;
+                    console.log(now);
+                    var success = parseInt($("#successnum").text(), 10);
+
+                    var row = $(this).closest('tr').prevAll().length;
+                    var col = $(this).closest('td').prevAll().length;
+                   //console.log("row: "+ row + ", col: " + col + " clicked");
+                    var val = play_get_data(row, col);
+                    var t = $(this).closest('td');
+                    if(val == -1){
+                        t.html('X');
+                        t.css('color', '#ee1111');
+                        $(".playbutt").attr('disabled', 'true');
+                        alert("Game Over!");
+                    }
+                    else{
+                        t.html(val);
+                        if(now == success) {
+                            $(".playbutt").attr('disabled', 'true');
+                            alert("Congratulations!! \nYou win the game~!");
+                        }
+                    }
+                    $("#nownum").text(String(now));
+                });
             });
+
+            
         </script>
     </head>
 
@@ -32,6 +61,9 @@
         </div>
         <div class="data">
             <p id="num"></p>
+            <p id="arr"></p>
+            <p id="successnum"></p>
+            <p id="nownum">0</p>
         </div>
 
      <!-- <script src="src/cookie.js"></script>   -->
