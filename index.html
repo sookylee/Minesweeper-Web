@@ -3,81 +3,30 @@
     <head>
         <title>Minesweeper (server_not_used) </title>
         <link rel="stylesheet" href="css/main.css" >
+        <script src="https://unpkg.com/vue@next"></script>
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-        <script type="text/javascript" src='src/start.js'></script>
-
-        <script type="text/javascript">
-            $(document).ready(function() {
-                $("#start").click(function() {
-                    var res = start();
-                    var n = res[0];
-                    var arr = res[1];
-                    //set_cookie(document, arr, "nowMineState");
-                    $("#num").text(n);
-                    $("#arr").text(arr);
-                    setTable(n, arr);
-                });
-                
-                $(document).on('click',".playbutt", function(){
-                    var now = parseInt($("#nownum").text(), 10) + 1;
-                    var success = parseInt($("#successnum").text(), 10);
-                    var life = parseInt($("#life").text(), 10);
-
-                    var row = $(this).closest('tr').prevAll().length;
-                    var col = $(this).closest('td').prevAll().length;
-                   //console.log("row: "+ row + ", col: " + col + " clicked");
-                    //console.log("now: " + now);
-                    //console.log("success: " + success);
-
-                    var val = play_get_data(row, col);
-                    var t = $(this).closest('td');
-                    if(val == -1){
-                        t.html('X');
-                        t.css('color', '#ee1111');
-                        if(life == 1){
-                            $("#life").text(0);
-                            $(".playbutt").attr('disabled', 'true');
-                            alert("Game Over!");
-                        }
-                        else {
-                            $("#life").text(life-1);
-                        }
-                    }
-                    else{
-                        t.html(val);
-                        if(now == success) {
-                            $(".playbutt").attr('disabled', 'true');
-                            alert("Congratulations!! \nYou win the game~!");
-                        }
-                    }
-                    $("#nownum").text(String(now));
-                });
-            });
-
-            
-        </script>
     </head>
 
     <body>
-        <div class='butt'>
+        <header class='butt' id="setting">
             Life: 
-            <span id="life">5</span>
-            <button id='start'>Start</button>
-        </div>
-        <div class='panel'>
-            <table id="playspace">
-                <tbody id="showbox">
-                </tbody>
-            </table>
-        </div>
-        <div class="data">
-            <p id="num"></p>
-            <p id="arr"></p>
-            <p id="successnum"></p>
-            <p id="nownum">0</p>
-        </div>
+            <span id="life">{{ life }}</span>
+            <button @click="start()">Start</button>
+        </header>
+        <main id="playspace">
+            <div class='panel'>
+                <table>
+                    <tbody id="showbox">
+                        <tr v-for="i in blocks">
+                            <td v-for="j in blocks" class="playbutt" @click="clickPlayButt($event)"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
 
      <!-- <script src="src/cookie.js"></script>   -->
-     <script src="src/show.js"></script>
+        <script type="text/javascript" src='src/start.js'></script>
+        <script type="text/javascript" src="src/show.js"></script>
     </body>
 </html>
